@@ -10,7 +10,7 @@ const cronLib = require('./lib/cron-lib');
 
 const index = require('./routes');
 const health = require('./routes/health');
-const products = require('./routes/products');
+const syncClinicDb = require('./routes/sync-clinic-db');
 
 const app = express();
 
@@ -79,7 +79,7 @@ app.options('*', (req, res) => {
 });
 
 app.use('/', index);
-app.use('/prodotti', products);
+app.use('/sync-clinic-db', syncClinicDb);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
