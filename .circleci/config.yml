@@ -1,0 +1,96 @@
+version: 2
+jobs:
+  qa:
+    docker:
+      - image: giona69/php-node14-aws
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - node-v4-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - node-v4-{{ .Branch }}-
+            - node-v4-
+      - run: yarn install
+      - run: yarn list
+      - run: yarn lint
+      - run: yarn test
+      - run: npm install --package-lock-only
+      - store_test_results:
+          path: test-results
+      - save_cache:
+          paths:
+            - node_modules
+            - package-lock.json
+          key: node-v4-{{ .Branch }}-{{ checksum "yarn.lock" }}
+
+  build-stage:
+    docker:
+      - image: giona69/php-node14-aws
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - node-v4-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - node-v4-{{ .Branch }}-
+            - node-v4-
+      - run: yarn build
+      - run: rm -rf node_modules
+      - run: find .platform/hooks/ -exec chmod +x {} \;
+      - run: eb deploy mister-gadget-bot-db-stage
+
+  build-prod-cron:
+    docker:
+      - image: giona69/php-node14-aws
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - node-v4-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - node-v4-{{ .Branch }}-
+            - node-v4-
+      - run: yarn build
+      - run: rm -rf node_modules
+      - run: find .platform/hooks/ -exec chmod +x {} \;
+      - run: eb deploy mister-gadget-bot-db-cron
+
+  build-prod:
+    docker:
+      - image: giona69/php-node14-aws
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - node-v4-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - node-v4-{{ .Branch }}-
+            - node-v4-
+      - run: yarn build
+      - run: rm -rf node_modules
+      - run: find .platform/hooks/ -exec chmod +x {} \;
+      - run: eb deploy mister-gadget-bot-db-prod
+
+workflows:
+  version: 2
+  mister-gadget:
+    jobs:
+      - qa:
+          filters:
+            tags:
+              only: /.*/
+      - build-stage:
+          requires:
+            - qa
+          filters:
+            branches:
+              only: /^feature.*/
+      - build-prod-cron:
+          requires:
+            - qa
+          filters:
+            branches:
+              only: master
+      - build-prod:
+          requires:
+            - qa
+          filters:
+            branches:
+              only: master

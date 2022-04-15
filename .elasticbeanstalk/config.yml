@@ -1,0 +1,15 @@
+environment-defaults:
+  mister-gadget-stage:
+    branch: null
+    repository: null
+global:
+  application_name: mister-gadget
+  default_ec2_keyname: null
+  default_platform: Node.js
+  default_region: eu-central-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  sc: git
+  workspace_type: Application

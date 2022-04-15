@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "rootDir": "./",
+    "outDir": "./build",
+    "pretty": true,
+    "allowJs": true,
+    "checkJs": true,
+    "jsx": "react",
+    "moduleResolution": "node"
+  }
+}
