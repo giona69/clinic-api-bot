@@ -1,13 +1,13 @@
-const express = require("express")
-const Utils = require("../bin/utils")
+const express = require('express');
+const Utils = require('../bin/utils');
 
-const router = express.Router()
+const router = express.Router();
 
-Utils.init("index")
+Utils.init('index');
 
-router.get("/", (req, res) => {
-  Utils.log("INDEX", "LOG: aws index")
-  res.send("index")
-})
+router.get('/', (req, res) => {
+  Utils.log('INDEX', 'LOG: aws index');
+  res.send('index');
+});
 
-module.exports = router
+module.exports = router;

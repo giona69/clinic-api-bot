@@ -104,10 +104,11 @@
     "gulp"
   ],
   "prettier": {
-    "trailingComma": "es5",
-    "semi": false,
-    "jsxBracketSameLine": true,
-    "singleQuote": false
+    "singleQuote": true,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "printWidth": 100
   },
   "jest-junit": {
     "suiteName": "jest tests",

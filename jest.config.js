@@ -12,9 +12,6 @@ module.exports = {
   coverageDirectory: 'test-results/coverage',
   collectCoverageFrom: ['./**/*.js', '!./routes/**/*.js', '!./views/js/*.js'],
   coverageReporters: ['json-summary', 'json', 'text'],
-  reporters: [
-    'default',
-    'jest-junit',
-  ],
+  reporters: ['default', 'jest-junit'],
   testEnvironment: 'node',
 };
