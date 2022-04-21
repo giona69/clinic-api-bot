@@ -1,9 +1,9 @@
 environment-defaults:
-  mister-gadget-stage:
+  connexia-node-api-stage:
     branch: null
     repository: null
 global:
-  application_name: mister-gadget
+  application_name: connexia-mode
   default_ec2_keyname: null
   default_platform: Node.js
   default_region: eu-central-1

@@ -45,7 +45,8 @@
     "sleep": "^6.3.0",
     "slugify": "^1.6.5",
     "soap": "^0.43.0",
-    "xlsx": "^0.18.0"
+    "xlsx": "^0.18.0",
+    "xml2js": "^0.4.23"
   },
   "scripts": {
     "lint": "echo \"linting currently disabled, doesn't work with .jsx\"",
