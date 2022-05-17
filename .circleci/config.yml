@@ -55,7 +55,7 @@ jobs:
 
 workflows:
   version: 2
-  mister-gadget:
+  clinic-api:
     jobs:
       - qa:
           filters:
