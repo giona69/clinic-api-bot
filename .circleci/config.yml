@@ -2,7 +2,7 @@ version: 2
 jobs:
   qa:
     docker:
-      - image: giona69/php-node14-aws
+      - image: giona69/php8.1.5-node-aws
     steps:
       - checkout
       - restore_cache:
@@ -25,7 +25,7 @@ jobs:
 
   build-stage:
     docker:
-      - image: giona69/php-node14-aws
+      - image: giona69/php8.1.5-node-aws
     steps:
       - checkout
       - restore_cache:
@@ -40,7 +40,7 @@ jobs:
 
   build-prod:
     docker:
-      - image: giona69/php-node14-aws
+      - image: giona69/php8.1.5-node-aws
     steps:
       - checkout
       - restore_cache:
