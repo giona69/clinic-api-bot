@@ -12,6 +12,7 @@ const index = require('./routes');
 const health = require('./routes/health');
 const syncClinicDb = require('./routes/sync-clinic-db');
 const syncTrialsDb = require('./routes/sync-trials-db');
+const exportAll = require('./routes/export-all');
 
 const app = express();
 
@@ -82,6 +83,7 @@ app.options('*', (req, res) => {
 app.use('/', index);
 app.use('/sync-clinic-db', syncClinicDb);
 app.use('/sync-trials-db', syncTrialsDb);
+app.use('/export-all', exportAll);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
