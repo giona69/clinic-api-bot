@@ -5,34 +5,19 @@ jobs:
       - image: giona69/php8.1.5-node-aws
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - node-v5-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - node-v5-{{ .Branch }}-
-            - node-v5-
       - run: yarn install
       - run: yarn list
       - run: yarn lint
       - run: yarn test
       - run: npm install --package-lock-only
-      - store_test_results:
-          path: test-results
-      - save_cache:
-          paths:
-            - node_modules
-            - package-lock.json
-          key: node-v5-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
   build-stage:
     docker:
       - image: giona69/php8.1.5-node-aws
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - node-v5-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - node-v5-{{ .Branch }}-
-            - node-v5-
+      - run: yarn install
+      - run: npm install --package-lock-only
       - run: yarn build
       - run: rm -rf node_modules
       - run: find .platform/hooks/ -exec chmod +x {} \;
@@ -43,11 +28,8 @@ jobs:
       - image: giona69/php8.1.5-node-aws
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - node-v5-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - node-v5-{{ .Branch }}-
-            - node-v5-
+      - run: yarn install
+      - run: npm install --package-lock-only
       - run: yarn build
       - run: rm -rf node_modules
       - run: find .platform/hooks/ -exec chmod +x {} \;
