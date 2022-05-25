@@ -9,14 +9,14 @@ const router = express.Router();
 router.get(
   '/*',
   errorHandler(async (req, res) => {
-    Utils.log('CRON', 'sync-trials-db');
+    Utils.log('CRON', 'sync-clinical-trials');
     const worker = fork('./lib/worker-lib');
     worker.on('message', (resultInfo) => {
       Utils.logobj('CRON', 'sync-trials-db', resultInfo);
       worker.kill();
     });
 
-    worker.send({ action: 'syncTrialsDBData' });
+    worker.send({ action: 'syncClinicalTrials' });
 
     res.send('processing');
   }),
