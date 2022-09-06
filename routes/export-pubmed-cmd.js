@@ -6,9 +6,7 @@ const yargs = require('yargs');
 const clinicdb = require('../lib/clinic-db-lib');
 const Utils = require('../bin/utils');
 
-const options = yargs
-  .usage('Usage: --offset <offset>')
-  .option('offset', {
+const options = yargs.usage('Usage: --offset <offset>').option('offset', {
   alias: 'offset',
   describe: 'offset',
   type: 'string',
@@ -17,6 +15,7 @@ const options = yargs
 
 Utils.init('exportPubmed START');
 console.log(options);
+// @ts-ignore
 console.log(options.offset);
 
 // @ts-ignore
