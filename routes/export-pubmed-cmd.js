@@ -16,8 +16,10 @@ const options = yargs
 });
 
 Utils.init('exportPubmed START');
+console.log(options);
+console.log(options.offset);
 
 // @ts-ignore
-clinicdb.exportPubmed(Number.parseInt(options.offset));
+clinicdb.exportPubmed(1049);
 
 Utils.log('exportAllTerms', 'END');
