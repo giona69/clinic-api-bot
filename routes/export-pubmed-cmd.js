@@ -29,6 +29,6 @@ const Utils = require('../bin/utils');
 
 Utils.init('exportAllTerms START');
 
-clinicdb.exportAllTerms();
+clinicdb.exportPubmed();
 
 Utils.log('exportAllTerms', 'END');
