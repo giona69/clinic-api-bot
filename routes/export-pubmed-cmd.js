@@ -16,6 +16,6 @@ const options = yargs.option('offset', {
 Utils.init('exportAllTerms START');
 
 // @ts-ignore
-clinicdb.exportPubmed(options.offset);
+clinicdb.exportPubmed(Number.parseInt(options.offset));
 
 Utils.log('exportAllTerms', 'END');
