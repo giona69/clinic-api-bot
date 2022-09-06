@@ -45,7 +45,7 @@
     "soap": "^0.43.0",
     "xlsx": "^0.18.0",
     "xml2js": "^0.4.23",
-    "yargs": "^17.5.1"
+    "yargs": "13.2"
   },
   "scripts": {
     "lint": "echo \"linting currently disabled, doesn't work with .jsx\"",
