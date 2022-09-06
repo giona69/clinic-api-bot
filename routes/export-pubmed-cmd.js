@@ -18,11 +18,6 @@ const options = yargs
 Utils.init('exportPubmed START');
 
 // @ts-ignore
-console.log(options);
-// @ts-ignore
-console.log(Number.parseInt(options.offset));
-return;
-// @ts-ignore
 clinicdb.exportPubmed(Number.parseInt(options.offset));
 
 Utils.log('exportAllTerms', 'END');
