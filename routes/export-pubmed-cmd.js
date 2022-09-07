@@ -19,6 +19,6 @@ console.log(options);
 console.log(options.offset);
 
 // @ts-ignore
-clinicdb.exportPubmed(1049);
+clinicdb.exportPubmed(3465);
 
 Utils.log('exportAllTerms', 'END');
